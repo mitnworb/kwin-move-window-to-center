@@ -42,7 +42,7 @@ registerShortcut("MoveWindowToRight", "Move Window to Right", "ctrl+Meta+Right",
     if (client.moveable) {
         var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
         client.geometry = {
-            x: 20 + (maxArea.width * .75),
+            x: maxArea.width * .75,
             y: 20,
             width: (maxArea.width * .25) - 20,
             height: maxArea.height - 40
