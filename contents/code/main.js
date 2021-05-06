@@ -18,10 +18,10 @@ registerShortcut("MoveWindowToCenter", "Move Window to Center", "Meta+C", functi
     if (client.moveable) {
         var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
         client.geometry = {
-            x: maxArea.x + (maxArea.width - client.width) / 2,
-            y: maxArea.y + (maxArea.height - client.height) / 2,
-            width: client.width - 20,
-            height: client.height - 20
+            x: (maxArea.x * .25) + 20,
+            y: 20,
+            width: (maxArea.x / 2) - 40,
+            height: maxArea.y - 40
         };
     }
 });
