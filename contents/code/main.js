@@ -13,15 +13,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+var gap = 10;
+
+
 registerShortcut("MoveWindowToCenter", "Move Window to Center", "ctrl+Meta+Up", function () {
     var client = workspace.activeClient;
     if (client.moveable) {
         var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
         client.geometry = {
-            x: 20 + (maxArea.width * .25),
-            y: 20,
-            width: (maxArea.width / 2) - 40,
-            height: maxArea.height - 40
+            x: gap + (maxArea.width * .25),
+            y: gap,
+            width: (maxArea.width / 2) - (gap * 2),
+            height: maxArea.height - (gap * 2)
         };
     }
 });
@@ -30,10 +33,10 @@ registerShortcut("MoveWindowToLeft", "Move Window to Left", "ctrl+Meta+Left", fu
     if (client.moveable) {
         var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
         client.geometry = {
-            x: 20,
-            y: 20,
-            width: (maxArea.width * .25) - 20,
-            height: maxArea.height - 40
+            x: gap,
+            y: gap,
+            width: (maxArea.width * .25) - gap,
+            height: maxArea.height - (gap * 2)
         };
     }
 });
@@ -43,9 +46,9 @@ registerShortcut("MoveWindowToRight", "Move Window to Right", "ctrl+Meta+Right",
         var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
         client.geometry = {
             x: maxArea.width * .75,
-            y: 20,
-            width: (maxArea.width * .25) - 20,
-            height: maxArea.height - 40
+            y: gap,
+            width: (maxArea.width * .25) - gap,
+            height: maxArea.height - (gap * 2)
         };
     }
 });
