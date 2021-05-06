@@ -13,15 +13,40 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-registerShortcut("MoveWindowToCenter", "Move Window to Center", "Meta+C", function () {
+registerShortcut("MoveWindowToCenter", "Move Window to Center", "ctrl+Meta+Up", function () {
     var client = workspace.activeClient;
     if (client.moveable) {
         var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
         client.geometry = {
-            x: maxArea.width * .25,
+            x: 20 + (maxArea.width * .25),
             y: 20,
-            width: maxArea.width / 2,
+            width: (maxArea.width / 2) - 40,
             height: maxArea.height - 40
         };
     }
 });
+registerShortcut("MoveWindowToLeft", "Move Window to Left", "ctrl+Meta+Left", function () {
+    var client = workspace.activeClient;
+    if (client.moveable) {
+        var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
+        client.geometry = {
+            x: 20,
+            y: 20,
+            width: (maxArea.width * .25) - 20,
+            height: maxArea.height - 40
+        };
+    }
+});
+registerShortcut("MoveWindowToRight", "Move Window to Right", "ctrl+Meta+Right", function () {
+    var client = workspace.activeClient;
+    if (client.moveable) {
+        var maxArea = workspace.clientArea(KWin.MaximizeArea, client);
+        client.geometry = {
+            x: 20 + (maxArea.width * .75),
+            y: 20,
+            width: (maxArea.width * .25) - 20,
+            height: maxArea.height - 40
+        };
+    }
+});
+
